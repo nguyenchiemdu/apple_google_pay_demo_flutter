@@ -1,16 +1,42 @@
 # stripe_payment_demo
 
-A new Flutter project.
+A Flutter project to demo Apple Pay and Google Pay combine with Stripe.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Add Stripe API key
+Follow the [Stripe instruction](https://stripe.com/docs/keys) to get the Stripe API keys. <br/>
+Add the API keys into <br/>
+    ./server/.env
+    ./lib/.env.dart 
 
-A few resources to get you started if this is your first Flutter project:
+### Start the Server
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+At the project directory
+```bash
+cd server
+npm i
+npm start
+```
+You will seee the IP address of server
+```bash
+> server@1.0.0 start
+> npx tsc && node dist/app.js
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Express is listening at http://192.168.0.5:4242
+```
+Copy this IP to ./lib/config.dart
+
+```dart
+class AppConfig {
+  static const apiUrl = 'http://192.168.0.5:4242';
+}
+
+```
+
+### Start Flutter project
+
+```bash
+fvm use 3.7.12
+fvm flutter run
+```
